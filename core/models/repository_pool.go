@@ -7,8 +7,8 @@ import (
 )
 
 type RepositoryPool struct {
-	Id        int
-	Identity  string
+	Id        int    `gorm:"primarykey"`
+	Identity  string `gorm:"type:varchar(36)"`
 	Hash      string
 	Name      string
 	Ext       string

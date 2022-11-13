@@ -6,7 +6,7 @@ MaxBytes: 100485760
 Timeout: 0
 
 Mysql:
-  DataSource: root:root@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
+  DataSource: gcloud:gcloud666@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
 
 Redis:
   Addr: localhost:6379

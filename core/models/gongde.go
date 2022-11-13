@@ -7,7 +7,7 @@ import (
 )
 
 type GongdeBasic struct {
-	Id        int
+	Id        int `gorm:"primarykey"`
 	Count     int
 	CreatedAt time.Time      `gorm:"created"`
 	UpdatedAt time.Time      `gorm:"updated"`

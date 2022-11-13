@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package fileud;
+option go_package = "./fileud";
+
+service Fileud{
+  rpc FileUpload(FileUploadRequest) returns (FileUploadReply);
+  rpc FileDownload(FileDownloadRequest) returns (FileDownloadReply);
+  rpc FileUploadChunk(FileUploadChunkRequest) returns (FileUploadChunkReply);
+  rpc FileUploadChunkComplete(FileUploadChunkCompleteRequest) returns (FileUploadChunkCompleteReply);
+  rpc FileUploadPrepare(FileUploadPrepareRequest) returns (FileUploadPrepareReply);
+}
+
+message FileUploadRequest {
+  string hash = 1;
+  string name = 2;
+  int64 size = 3;
+  string path = 4;
+  string ext = 5;
+}
+
+message FileUploadReply {
+  string identity = 1;
+  string ext = 2;
+  string name = 3;
+  string msg = 4;
+  int32 code = 5;
+}
+
+message FileDownloadRequest {
+  string hash = 1;
+  string name = 2;
+  int64 size = 3;
+  string path = 4;
+  string ext = 5;
+}
+
+message FileDownloadReply {
+  bytes data = 1;
+  string msg = 2;
+  int32 code = 3;
+}
+
+message FileUploadChunkRequest {}
+
+message FileUploadChunkReply {
+  string etag = 1;
+  string msg = 2;
+  int32 code = 3;
+}
+
+message FileUploadChunkCompleteRequest {
+  string key = 1;
+  string upload_id = 2;
+  repeated CosObject cos_objects = 3;
+}
+
+message FileUploadChunkCompleteReply {
+  string msg = 1;
+  int32 code = 2;
+}
+
+message FileUploadPrepareRequest {
+  string md5 = 1;
+  string name = 2;
+  string ext = 3;
+}
+
+message FileUploadPrepareReply {
+  string identity = 1;
+  string upload_id = 2;
+  string key = 3;
+  string msg = 4;
+  int32 code = 5;
+}
+
+message CosObject {
+  int32  part_number = 1;
+  string etag = 2;
+}

@@ -7,10 +7,10 @@ import (
 )
 
 type PostsFeedback struct {
-	Id            int
-	Identity      string
-	UserIdentity  string
-	PostsIdentity string
+	Id            int    `gorm:"primarykey"`
+	Identity      string `gorm:"type:varchar(36)"`
+	UserIdentity  string `gorm:"type:varchar(36)"`
+	PostsIdentity string `gorm:"type:varchar(36)"`
 	Type          string
 	Count         int
 	Read          int

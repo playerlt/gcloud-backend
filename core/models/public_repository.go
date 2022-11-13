@@ -7,9 +7,9 @@ import (
 )
 
 type PublicRepository struct {
-	Id                 int
-	Identity           string
-	UserIdentity       string
+	Id                 int    `gorm:"primarykey"`
+	Identity           string `gorm:"type:varchar(36)"`
+	UserIdentity       string `gorm:"type:varchar(36)"`
 	ParentId           int64
 	RepositoryIdentity string
 	Ext                string

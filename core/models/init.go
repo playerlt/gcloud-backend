@@ -15,13 +15,13 @@ import (
 	初始化数据库
 */
 func Init(dataSource string) *gorm.DB {
-	engine, err := gorm.Open(mysql.Open("root:"+define.MySQLPassword+"@tcp(81.69.202.167:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{})
+	engine, err := gorm.Open(mysql.Open(dataSource), &gorm.Config{})
 	// engine, err := gorm.Open(mysql.Open(dataSource), &gorm.Config{})
 	if err != nil {
 		log.Printf("Xorm New Engine Error:%v", err)
 		return nil
 	}
-
+	//dbAutoMigrate(engine)
 	return engine
 }
 
@@ -34,4 +34,19 @@ func InitRedis(c config.Config) *redis.Client {
 		Password: define.RedisPassword, // no password set
 		DB:       0,                    // use default DB
 	})
+}
+
+// 自动迁移表结构
+func dbAutoMigrate(DB *gorm.DB) {
+	_ = DB.AutoMigrate(
+		&GongdeBasic{},
+		&PostsBasic{},
+		&PostsCommentBasic{},
+		&PostsFeedback{},
+		&PublicRepository{},
+		&RepositoryPool{},
+		&ShareBasic{},
+		&UserBasic{},
+		&UserRepository{},
+	)
 }

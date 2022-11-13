@@ -7,8 +7,8 @@ import (
 )
 
 type UserBasic struct {
-	Id        int
-	Identity  string
+	Id        int    `gorm:"primarykey"`
+	Identity  string `gorm:"type:varchar(36)"`
 	Name      string
 	Password  string
 	Email     string

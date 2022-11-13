@@ -7,11 +7,11 @@ import (
 )
 
 type PostsCommentBasic struct {
-	Id            int
-	Identity      string
-	UserIdentity  string
-	PostsIdentity string
-	ReplyIdentity string
+	Id            int    `gorm:"primarykey"`
+	Identity      string `gorm:"type:varchar(36)"`
+	UserIdentity  string `gorm:"type:varchar(36)"`
+	PostsIdentity string `gorm:"type:varchar(36)"`
+	ReplyIdentity string `gorm:"type:varchar(36)"`
 	ReplyName     string
 	Content       string
 	Mention       string

@@ -7,11 +7,11 @@ import (
 )
 
 type ShareBasic struct {
-	Id                     int
-	Identity               string
-	UserIdentity           string
-	UserRepositoryIdentity string
-	RepositoryIdentity     string
+	Id                     int    `gorm:"primarykey"`
+	Identity               string `gorm:"type:varchar(36)"`
+	UserIdentity           string `gorm:"type:varchar(36)"`
+	UserRepositoryIdentity string `gorm:"type:varchar(36)"`
+	RepositoryIdentity     string `gorm:"type:varchar(36)"`
 	ExpiredTime            int
 	ClickNum               int
 	Desc                   string
