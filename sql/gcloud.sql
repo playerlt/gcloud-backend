@@ -15,14 +15,13 @@
 */
 
 drop database if exists gcloud;
-create database gcloud;
 
 drop user if exists 'gcloud'@'%';
 -- 支持emoji：需要mysql数据库参数： character_set_server=utf8mb4
-create database litemall default character set utf8mb4 collate utf8mb4_unicode_ci;
-use litemall;
+create database gcloud default character set utf8mb4 collate utf8mb4_unicode_ci;
+use gcloud;
 create user 'gcloud'@'%' identified by 'gcloud2022';
-grant all privileges on litemall.* to 'gcloud'@'%';
+grant all privileges on gcloud.* to 'gcloud'@'%';
 flush privileges;
 
 
