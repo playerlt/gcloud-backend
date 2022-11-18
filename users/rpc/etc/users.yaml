@@ -1,0 +1,13 @@
+Name: users.rpc
+ListenOn: 0.0.0.0:9081
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: users.rpc
+
+Mysql:
+  DataSource: gcloud:gcloud2022@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Addr: localhost:6379
+  Host: localhost

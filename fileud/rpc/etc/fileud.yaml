@@ -1,5 +1,11 @@
 Name: fileud.rpc
-ListenOn: 0.0.0.0:8080
+ListenOn: 0.0.0.0:9085
+Mysql:
+  DataSource: gcloud:gcloud2022@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Addr: localhost:6379
+  Host: localhost
 Etcd:
   Hosts:
   - 127.0.0.1:2379

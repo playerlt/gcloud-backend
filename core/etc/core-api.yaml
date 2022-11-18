@@ -6,19 +6,44 @@ MaxBytes: 100485760
 Timeout: 0
 
 Mysql:
-  DataSource: gcloud:gcloud666@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
+  DataSource: gcloud:gcloud2022@tcp(127.0.0.1:3306)/gcloud?charset=utf8mb4&parseTime=True&loc=Local
 
 Redis:
   Addr: localhost:6379
 
-MsgRpc:
-  Etcd:
-    Hosts:
-      - 127.0.0.1:2379
-    Key: msg.rpc
 
-UserRpc:
+PostsRPC:
   Etcd:
     Hosts:
       - 127.0.0.1:2379
-    Key: user.rpc
+    Key: posts.rpc
+
+UsersRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: users.rpc
+
+FileudRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: fileud.rpc
+
+PrivateRepoRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: privaterepo.rpc
+
+PublicRepoRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: publicrepo.rpc
+
+ShareRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: share.rpc

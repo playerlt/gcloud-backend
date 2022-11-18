@@ -2,6 +2,13 @@
 package handler
 
 import (
+	"gcloud/core/internal/handler/fileud"
+	"gcloud/core/internal/handler/mail"
+	"gcloud/core/internal/handler/posts"
+	"gcloud/core/internal/handler/private_repo"
+	"gcloud/core/internal/handler/public_repo"
+	"gcloud/core/internal/handler/share"
+	"gcloud/core/internal/handler/users"
 	"net/http"
 
 	"gcloud/core/internal/svc"
@@ -15,57 +22,57 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				Method:  http.MethodPost,
 				Path:    "/user/login",
-				Handler: UserLoginHandler(serverCtx),
+				Handler: users.UserLoginHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/mail/code/send/register",
-				Handler: MailCodeSendRegisterHandler(serverCtx),
+				Handler: mail.MailCodeSendRegisterHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/user/register",
-				Handler: UserRegisterHandler(serverCtx),
+				Handler: users.UserRegisterHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/share/basic/detail",
-				Handler: ShareBasicDetailHandler(serverCtx),
+				Handler: share.ShareBasicDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/popular/share/list",
-				Handler: PopularShareListHandler(serverCtx),
+				Handler: share.PopularShareListHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/share/statistics",
-				Handler: ShareStatisticsHandler(serverCtx),
+				Handler: share.ShareStatisticsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/register/count",
-				Handler: RegisterCountHandler(serverCtx),
+				Handler: users.RegisterCountHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/public/file/list",
-				Handler: PublicFileListHandler(serverCtx),
+				Handler: public_repo.PublicFileListHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/posts/list",
-				Handler: PostsListHandler(serverCtx),
+				Handler: posts.PostsListHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/posts/comment",
-				Handler: PostsCommentsHandler(serverCtx),
+				Handler: posts.PostsCommentsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/posts/detail",
-				Handler: PostsDetailHandler(serverCtx),
+				Handler: posts.PostsDetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
@@ -82,7 +89,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				{
 					Method:  http.MethodPost,
 					Path:    "/public/file/save",
-					Handler: PublicFileSaveHandler(serverCtx),
+					Handler: public_repo.PublicFileSaveHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodGet,
@@ -92,132 +99,132 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				{
 					Method:  http.MethodPost,
 					Path:    "/file/upload",
-					Handler: FileUploadHandler(serverCtx),
+					Handler: fileud.FileUploadHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/user/update",
-					Handler: UserUpdateHandler(serverCtx),
+					Handler: users.UserUpdateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/user/repository/save",
-					Handler: UserRepositorySaveHandler(serverCtx),
+					Handler: private_repo.UserRepositorySaveHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodGet,
 					Path:    "/user/file/list",
-					Handler: UserFileListHandler(serverCtx),
+					Handler: private_repo.UserFileListHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/user/file/name/update",
-					Handler: UserFileNameUpdateHandler(serverCtx),
+					Handler: private_repo.UserFileNameUpdateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/user/folder/create",
-					Handler: UserFolderCreateHandler(serverCtx),
+					Handler: private_repo.UserFolderCreateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodDelete,
 					Path:    "/user/file/delete",
-					Handler: UserFileDeleteHandler(serverCtx),
+					Handler: private_repo.UserFileDeleteHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/public/file/name/update",
-					Handler: PublicFileNameUpdateHandler(serverCtx),
+					Handler: public_repo.PublicFileNameUpdateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/public/folder/create",
-					Handler: PublicFolderCreateHandler(serverCtx),
+					Handler: public_repo.PublicFolderCreateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodDelete,
 					Path:    "/public/file/delete",
-					Handler: PublicFileDeleteHandler(serverCtx),
+					Handler: public_repo.PublicFileDeleteHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPut,
 					Path:    "/user/file/move",
-					Handler: UserFileMoveHandler(serverCtx),
+					Handler: private_repo.UserFileMoveHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/file/download",
-					Handler: FileDownloadHandler(serverCtx),
+					Handler: fileud.FileDownloadHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/share/basic/create",
-					Handler: ShareBasicCreateHandler(serverCtx),
+					Handler: share.ShareBasicCreateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/share/basic/save",
-					Handler: ShareBasicSaveHandler(serverCtx),
+					Handler: share.ShareBasicSaveHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodGet,
 					Path:    "/user/share/list",
-					Handler: UserShareListHandler(serverCtx),
+					Handler: share.UserShareListHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/refresh/authorization",
-					Handler: RefreshAuthorizationHandler(serverCtx),
+					Handler: users.RefreshAuthorizationHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodGet,
 					Path:    "/user/detail",
-					Handler: UserDetailHandler(serverCtx),
+					Handler: users.UserDetailHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/file/upload/prepare",
-					Handler: FileUploadPrepareHandler(serverCtx),
+					Handler: fileud.FileUploadPrepareHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/file/upload/chunk",
-					Handler: FileUploadChunkHandler(serverCtx),
+					Handler: fileud.FileUploadChunkHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/file/upload/chunk/complete",
-					Handler: FileUploadChunkCompleteHandler(serverCtx),
+					Handler: fileud.FileUploadChunkCompleteHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/posts/create",
-					Handler: PostsCreateHandler(serverCtx),
+					Handler: posts.PostsCreateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/posts/update",
-					Handler: PostsUpdateHandler(serverCtx),
+					Handler: posts.PostsUpdateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodDelete,
 					Path:    "/posts/delete",
-					Handler: PostsDeleteHandler(serverCtx),
+					Handler: posts.PostsDeleteHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/posts/comment/create",
-					Handler: PostsCommentCreateHandler(serverCtx),
+					Handler: posts.PostsCommentCreateHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodDelete,
 					Path:    "/posts/comment/delete",
-					Handler: PostsCommentDeleteHandler(serverCtx),
+					Handler: posts.PostsCommentDeleteHandler(serverCtx),
 				},
 				{
 					Method:  http.MethodPost,
 					Path:    "/posts/feedback/create",
-					Handler: PostsFeedbackCreateHandler(serverCtx),
+					Handler: posts.PostsFeedbackCreateHandler(serverCtx),
 				},
 			}...,
 		),

@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package share;
+option go_package = "./share";
+
+service Share{
+  rpc ShareBasicDetail(ShareBasicDetailRequest) returns (ShareBasicDetailReply);
+  rpc PopularShareList(PopularShareListRequest) returns (PopularShareListReply);
+  rpc ShareStatistics(ShareStatisticsRequest) returns (ShareStatisticsReply);
+  rpc ShareBasicCreate(ShareBasicCreateRequest) returns (ShareBasicCreateReply);
+  rpc ShareBasicSave(ShareBasicSaveRequest) returns (ShareBasicSaveReply);
+  rpc UserShareList(UserShareListRequest) returns (UserShareListReply);
+}
+
+message PopularShareListRequest {
+  int32 click_num = 1;
+}
+
+message PopularShareListReply {
+  repeated ShareBasicDetailReply list = 1;
+}
+
+message ShareBasicDetailRequest {
+  string identity = 1;
+}
+
+message ShareBasicDetailReply {
+  string identity = 1;
+  string repository_identity = 2;
+  string name = 3;
+  string owner = 4;
+  string avatar = 5;
+  string ext = 6;
+  int64 size = 7;
+  string path = 8;
+  int32 click_num = 9;
+  int32 expired_time = 10;
+  string desc = 11;
+  string updated_at = 12;
+}
+
+message ShareStatisticsRequest {}
+
+message ShareStatisticsReply {
+  int32 share_count = 1;
+  int32 click_num = 2;
+}
+
+message ShareBasicCreateRequest {
+  string user_identity = 1;
+  string user_repository_identity = 2;
+  int32 expired_time = 3;
+  string desc = 4;
+}
+
+message ShareBasicCreateReply {
+  string identity = 1;
+  string msg = 2;
+  int32 code = 3;
+}
+
+message ShareBasicSaveRequest {
+  string user_identity = 1;
+  string repository_identity = 2;
+  int64 parent_id = 3;
+}
+
+message ShareBasicSaveReply {
+  string identity = 1;
+  int32 code = 2;
+  string msg = 3;
+}
+
+message UserShareListRequest {
+  string name = 1;
+  string password = 2;
+  string email = 3;
+  string code = 4;
+  string user_identity = 5;
+}
+
+message UserShareListReply {
+  repeated ShareBasicDetailReply list = 1;
+}

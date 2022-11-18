@@ -2,7 +2,6 @@ package models
 
 import (
 	"gcloud/core/define"
-	"gcloud/core/internal/config"
 	"log"
 
 	"github.com/go-redis/redis/v8"
@@ -28,9 +27,9 @@ func Init(dataSource string) *gorm.DB {
 /*
 	初始化redis
 */
-func InitRedis(c config.Config) *redis.Client {
+func InitRedis(addr string) *redis.Client {
 	return redis.NewClient(&redis.Options{
-		Addr:     c.Redis.Addr,
+		Addr:     addr,
 		Password: define.RedisPassword, // no password set
 		DB:       0,                    // use default DB
 	})

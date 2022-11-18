@@ -39,6 +39,14 @@
 
 Windows 11 with vscode，go module
 
+### 运行
+- 执行sql/gcloud.sql文件中的命令
+- core/models/init.go会自动创建数据库表格，不需要可以注释掉dbAutoMigrate
+- 修改core/define.go中的邮箱，redis，mysql密码，腾讯云id,key和网址
+- 修改各服务文件夹etc配置中的mysql密码
+- 打开redis
+- 打开etcd
+- 在各服务目录下分别go run .运行服务
 ## 共建者
 
 <div style="display:flex">
