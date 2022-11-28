@@ -17,7 +17,7 @@ func Init(dataSource string) *gorm.DB {
 	engine, err := gorm.Open(mysql.Open(dataSource), &gorm.Config{})
 	// engine, err := gorm.Open(mysql.Open(dataSource), &gorm.Config{})
 	if err != nil {
-		log.Printf("Xorm New Engine Error:%v", err)
+		log.Printf("gorm New Engine Error:%v", err)
 		return nil
 	}
 	//dbAutoMigrate(engine)
